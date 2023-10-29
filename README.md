@@ -10,7 +10,9 @@ by adding `ao_c_shared` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ao_c_shared, "~> 0.1.0"}
+    # {:ao_c_shared, "~> 0.1.0"}
+    {:ao_c_shared, git: "https://github.com/ericridgeway/AoCShared.git", branch: "master"},
+
   ]
 end
 ```
