@@ -1,5 +1,7 @@
 defmodule AoCShared.Order do
   @moduledoc """
+  Functions for putting collections in various orders
+
   In this module:
     - Lists are used for *ordered* collections
       - Think all possible shuffled orders for a deck of cards
@@ -47,9 +49,7 @@ defmodule AoCShared.Order do
   end
 
   @doc """
-  From collection of n items, return all unique combinations of size k
-
-  aka: "n choose k" or just "combinations"
+  From collection of n items, return all unique combinations of size k (aka "n choose k" or "combinations")
 
   - Calculation for Returned Outer collection size:
     - https://www.statlect.com/glossary/binomial-coefficient
