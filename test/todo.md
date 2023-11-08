@@ -1,0 +1,1 @@
+- Make an "alternate name" for permutations the same way I did combinations (on the order module)

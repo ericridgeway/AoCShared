@@ -56,6 +56,9 @@ defmodule AoCShared.Order do
 
   - Each inner ordering will be size: k
 
+  ## Alternate names
+  - `combinations/2`
+
   ## Examples
       iex> set_of_3 = MapSet.new(~w(a b c))
 
@@ -105,6 +108,9 @@ defmodule AoCShared.Order do
     |> Enum.flat_map(&all_lists/1)
     |> MapSet.new
   end
+
+  defdelegate combinations(set, sub_set_size), to: __MODULE__, as: :all_sub_lists
+
 
 
   # Source:
