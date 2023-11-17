@@ -1,4 +1,5 @@
 defmodule AoCShared.Ascii do
+  alias AoCShared.Coord
 
   # def to_map(ascii) do
   #   list_form =
@@ -17,6 +18,26 @@ defmodule AoCShared.Ascii do
   #   |> Map.new
   # end
 
+  @doc """
+  Turn a multiline ascii string into a map of coordinates and values at those coords
+
+  The bottom left is {1,1}
+
+  ## Examples
+      iex> Ascii.to_map(
+        \"""
+        .7
+        a.
+        \""")
+      %{
+        {1,1} => "a",
+        {1,2} => ".",
+        {2,1} => ".",
+        {2,2} => "7",
+      }
+
+  """
+  @spec to_map(String.t) :: %{Coord.t => String.t}
   def to_map(ascii) do
     list_form =
       ascii
