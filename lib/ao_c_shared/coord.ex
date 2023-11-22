@@ -18,6 +18,8 @@ defmodule AoCShared.Coord do
     end)
   end
 
+  def in_range?({x,y}, x_range, y_range), do: x in x_range and y in y_range
+
 
   defp cardinal_funcs, do: [&up/1, &down/1, &left/1, &right/1]
   defp diagonal_funcs, do: [&right_up/1, &right_down/1, &left_down/1, &left_up/1]
