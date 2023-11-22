@@ -25,7 +25,6 @@ defmodule AoCSharedTest.Coord do
   describe "in_range" do
     @x_range 1..10
     @y_range 1..2
-    # TODO Doc note: range is inclusive
 
     test "Solidly in" do
       assert Coord.in_range?({2,2}, @x_range, @y_range)
