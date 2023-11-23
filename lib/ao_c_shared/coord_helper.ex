@@ -16,6 +16,7 @@ defmodule AoCShared.CoordHelper do
     slide = direction_func.(t)
     result = find_collision_func.(slide)
 
+    raise "next, try turning this into With statement?"
     cond do
       give_up_when_func.(slide) -> :found_no_collision
       find_collision_func.(slide) -> result
