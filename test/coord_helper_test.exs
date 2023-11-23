@@ -9,8 +9,6 @@ defmodule AoCSharedTest.CoordHelper do
     x_range = 1..10
     y_range = 1..10
 
-    dir_func = &Coord.right/1
-
     give_up_when_func = &(not Coord.in_range?(&1, x_range, y_range))
     found_collision_func = fn target_coord ->
       board = %{
@@ -23,6 +21,7 @@ defmodule AoCSharedTest.CoordHelper do
     end
 
     # TODO NOTE This might just end up in Coord module
-    assert CoordHelper.first_in_direction(start, dir_func, give_up_when_func, found_collision_func) == {{7,1}, :knight}
+    assert CoordHelper.first_in_direction(start, &Coord.right/1, give_up_when_func, found_collision_func) == {{7,1}, :knight}
+    refute CoordHelper.first_in_direction(start, &Coord.down/1, give_up_when_func, found_collision_func)
   end
 end
