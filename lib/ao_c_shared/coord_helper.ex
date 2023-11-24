@@ -30,12 +30,10 @@ defmodule AoCShared.CoordHelper do
     loop = &first_in_direction(&1, direction_func, give_up_when_func, find_collision_func)
 
     slide = direction_func.(t)
-    result = find_collision_func.(slide)
 
-    # raise "next, try turning this into With statement?"
     cond do
       give_up_when_func.(slide) -> :found_no_collision
-      find_collision_func.(slide) -> result
+      result = find_collision_func.(slide) -> result
       true -> loop.(slide)
     end
   end

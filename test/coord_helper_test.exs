@@ -20,7 +20,6 @@ defmodule AoCSharedTest.CoordHelper do
       Enum.find(board, fn {board_coord, _value} -> board_coord == target_coord end)
     end
 
-    # TODO NOTE This might just end up in Coord module
     assert CoordHelper.first_in_direction(start, &Coord.right/1, give_up_when_func, found_collision_func) == {{7,1}, :knight}
     assert CoordHelper.first_in_direction(start, &Coord.down/1, give_up_when_func, found_collision_func) == :found_no_collision
   end
