@@ -18,6 +18,21 @@ defmodule AoCShared.Coord do
     end)
   end
 
+  @doc """
+  Check if a coord is in range, such as being on the grid of a game board
+
+  Given ranges are inclusive
+
+  ## Examples
+      iex> Coord.in_range?({2,2}, 1..10, 1..2))
+      true
+
+      iex> Coord.in_range?({99,99}, 1..10, 1..2))
+      false
+  """
+  @spec in_range?(t, Range.t, Range.t) :: boolean
+  def in_range?({x,y}=_t, x_range, y_range), do: x in x_range and y in y_range
+
 
   defp cardinal_funcs, do: [&up/1, &down/1, &left/1, &right/1]
   defp diagonal_funcs, do: [&right_up/1, &right_down/1, &left_down/1, &left_up/1]
