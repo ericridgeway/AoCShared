@@ -33,10 +33,10 @@ defmodule AoCShared.Coord do
   @spec in_range?(t, Range.t, Range.t) :: boolean
   def in_range?({x,y}=_t, x_range, y_range), do: x in x_range and y in y_range
 
+  def cardinal_funcs, do: [&up/1, &down/1, &left/1, &right/1]
+  def diagonal_funcs, do: [&right_up/1, &right_down/1, &left_down/1, &left_up/1]
+  def all_adjacent_funcs, do: cardinal_funcs() ++ diagonal_funcs()
 
-  defp cardinal_funcs, do: [&up/1, &down/1, &left/1, &right/1]
-  defp diagonal_funcs, do: [&right_up/1, &right_down/1, &left_down/1, &left_up/1]
-  defp all_adjacent_funcs, do: cardinal_funcs() ++ diagonal_funcs()
 
   # def neighbors(board, target) do
   #   board_coords =
