@@ -53,4 +53,26 @@ defmodule AoCShared.Ascii do
     end
     |> Map.new
   end
+
+  def to_map_with_size(ascii) do
+    list_form =
+      ascii
+      |> AoCShared.clean
+      |> String.split("\n")
+      |> Enum.map(&String.graphemes/1)
+      |> Enum.reverse
+
+    board =
+      for {row, row_num} <- Enum.with_index(list_form, 1),
+          {col, col_num} <- Enum.with_index(row, 1)
+      do
+        {{col_num, row_num}, col}
+      end
+      |> Map.new
+
+    y_max = list_form |> length
+    x_max = list_form  |> hd |> length
+
+    {board, 1..x_max, 1..y_max}
+  end
 end
