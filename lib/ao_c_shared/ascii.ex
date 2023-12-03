@@ -54,6 +54,7 @@ defmodule AoCShared.Ascii do
     |> Map.new
   end
 
+  # NOTE assumes all rows & cols are same length. If that's not the case, need to change this to a Map |> length |> max sort of thing instead
   def to_map_with_size(ascii) do
     list_form =
       ascii
