@@ -39,19 +39,8 @@ defmodule AoCShared.Ascii do
   """
   @spec to_map(String.t) :: %{Coord.t => String.t}
   def to_map(ascii) do
-    list_form =
-      ascii
-      |> AoCShared.clean
-      |> String.split("\n")
-      |> Enum.map(&String.graphemes/1)
-      |> Enum.reverse
-
-    for {row, row_num} <- Enum.with_index(list_form, 1),
-        {col, col_num} <- Enum.with_index(row, 1)
-    do
-      {{col_num, row_num}, col}
-    end
-    |> Map.new
+    {board, _x_range, _y_range} = to_map_with_size(ascii)
+    board
   end
 
   # NOTE assumes all rows & cols are same length. If that's not the case, need to change this to a Map |> length |> max sort of thing instead
