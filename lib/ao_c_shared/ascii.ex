@@ -28,7 +28,8 @@ defmodule AoCShared.Ascii do
         \"""
         .7
         a.
-        \""")
+        \"""
+      )
       %{
         {1,1} => "a",
         {1,2} => ".",

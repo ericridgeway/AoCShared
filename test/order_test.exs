@@ -41,4 +41,52 @@ defmodule AoCSharedTest.Order do
       ~w(c b),
     ])
   end
+
+  test "all_sub_lists_plus_repeats/2" do
+    width = 3
+    start_pool_of_3 = MapSet.new(~w(a b c))
+
+    expected =
+      MapSet.new([
+        ~w(a a a),
+        ~w(a a b),
+        ~w(a a c),
+
+        ~w(a b a),
+        ~w(a b b),
+        ~w(a b c),
+
+        ~w(a c a),
+        ~w(a c b),
+        ~w(a c c),
+
+
+        ~w(b a a),
+        ~w(b a b),
+        ~w(b a c),
+
+        ~w(b b a),
+        ~w(b b b),
+        ~w(b b c),
+
+        ~w(b c a),
+        ~w(b c b),
+        ~w(b c c),
+
+
+        ~w(c a a),
+        ~w(c a b),
+        ~w(c a c),
+
+        ~w(c b a),
+        ~w(c b b),
+        ~w(c b c),
+
+        ~w(c c a),
+        ~w(c c b),
+        ~w(c c c),
+      ])
+
+    assert Order.all_sub_lists_plus_repeats(start_pool_of_3, width) == expected
+  end
 end

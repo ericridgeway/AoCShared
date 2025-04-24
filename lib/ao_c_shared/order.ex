@@ -111,7 +111,23 @@ defmodule AoCShared.Order do
 
   defdelegate combinations(set, sub_set_size), to: __MODULE__, as: :all_sub_lists
 
+  def all_sub_lists_plus_repeats(set, width) do
+    set
+    |> MapSet.to_list
+    |> do_all_sub_lists_plus_repeats(width)
+    |> MapSet.new
+  end
 
+
+  defp do_all_sub_lists_plus_repeats(_, 0), do: [[]]
+  defp do_all_sub_lists_plus_repeats(pool, width) do
+    loop = &do_all_sub_lists_plus_repeats/2
+
+    for elem <- pool,
+        rest <- loop.(pool, width - 1) do
+      [elem|rest]
+    end
+  end
 
   # Source:
   #   https://elixirforum.com/t/most-elegant-way-to-generate-all-permutations/2706/2
