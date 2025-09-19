@@ -21,6 +21,34 @@ defmodule AoCSharedTest.Order do
     ])
   end
 
+  test "all_lists_all_sizes/1" do
+    assert set_of_3() |> Order.all_lists_all_sizes == MapSet.new([
+      ~w(a b c),
+      ~w(a c b),
+
+      ~w(b a c),
+      ~w(b c a),
+
+      ~w(c a b),
+      ~w(c b a),
+
+
+      ~w(a b),
+      ~w(b a),
+
+      ~w(a c),
+      ~w(c a),
+
+      ~w(b c),
+      ~w(c b),
+
+
+      ~w(a),
+      ~w(b),
+      ~w(c),
+    ])
+  end
+
   test "all_sub_sets/2" do
     assert set_of_3() |> Order.all_sub_sets(2) == MapSet.new([
       MapSet.new(~w(a b)),

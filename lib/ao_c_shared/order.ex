@@ -48,6 +48,19 @@ defmodule AoCShared.Order do
     |> MapSet.new
   end
 
+  @spec all_lists_all_sizes(set) :: set_of_lists
+  def all_lists_all_sizes(set) do
+    width =
+      set |> MapSet.size
+
+    range = width..1
+    Enum.reduce(range, MapSet.new, fn cur_width, new_set ->
+      set
+      |> all_sub_lists(cur_width)
+      |> MapSet.union(new_set)
+    end)
+  end
+
   @doc """
   From collection of n items, return all unique combinations of size k (aka "n choose k" or "combinations")
 
