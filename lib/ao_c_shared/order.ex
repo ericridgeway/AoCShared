@@ -50,14 +50,13 @@ defmodule AoCShared.Order do
 
   @spec all_lists_all_sizes(set) :: set_of_lists
   def all_lists_all_sizes(set) do
-    width =
-      set |> MapSet.size
-
-    range = width..1
-    Enum.reduce(range, MapSet.new, fn cur_width, new_set ->
+    set
+    |> MapSet.size
+    |> then(& &1..1)
+    |> Enum.reduce(MapSet.new, fn width, combined_sets ->
       set
-      |> all_sub_lists(cur_width)
-      |> MapSet.union(new_set)
+      |> all_sub_lists(width)
+      |> MapSet.union(combined_sets)
     end)
   end
 
