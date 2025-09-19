@@ -53,7 +53,7 @@ defmodule AoCShared.Order do
   def all_lists_all_sizes(set, width_limit \\ nil) do
     width_limit = width_limit || MapSet.size(set)
 
-    width_limit..1
+    width_limit..1//-1
     |> Enum.reduce(MapSet.new, fn width, combined_sets ->
       set
       |> all_sub_lists(width)
