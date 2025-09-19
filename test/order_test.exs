@@ -49,6 +49,24 @@ defmodule AoCSharedTest.Order do
     ])
   end
 
+  test "all_lists_all_sizes up to limit" do
+    assert set_of_3() |> Order.all_lists_all_sizes(2) == MapSet.new([
+      ~w(a b),
+      ~w(b a),
+
+      ~w(a c),
+      ~w(c a),
+
+      ~w(b c),
+      ~w(c b),
+
+
+      ~w(a),
+      ~w(b),
+      ~w(c),
+    ])
+  end
+
   test "all_sub_sets/2" do
     assert set_of_3() |> Order.all_sub_sets(2) == MapSet.new([
       MapSet.new(~w(a b)),
